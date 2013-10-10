@@ -49,11 +49,11 @@ public class MVELInterpretedRuntime extends AbstractParser {
       return parseAndExecuteInterpreted();
     }
     catch (ArrayIndexOutOfBoundsException e) {
-      e.printStackTrace();
+//      e.printStackTrace();
       throw new CompileException("unexpected end of statement", expr, length);
     }
     catch (NullPointerException e) {
-      e.printStackTrace();
+//      e.printStackTrace();
 
       if (cursor >= length) {
         throw new CompileException("unexpected end of statement", expr, length);
