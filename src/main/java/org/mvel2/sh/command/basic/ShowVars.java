@@ -37,19 +37,19 @@ public class ShowVars implements Command {
       else throw new CommandException("unknown argument: " + args[i]);
     }
 
-    System.out.println("Printing Variables ...");
+//    System.out.println("Printing Variables ...");
     if (values) {
       for (String key : vars.keySet()) {
-        System.out.println(key + " => " + String.valueOf(vars.get(key)));
+//        System.out.println(key + " => " + String.valueOf(vars.get(key)));
       }
     }
     else {
       for (String key : vars.keySet()) {
-        System.out.println(key);
+//        System.out.println(key);
       }
     }
 
-    System.out.println(" ** " + vars.size() + " variables total.");
+//    System.out.println(" ** " + vars.size() + " variables total.");
 
     return null;
   }

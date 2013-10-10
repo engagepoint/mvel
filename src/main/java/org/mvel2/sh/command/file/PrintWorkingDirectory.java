@@ -24,7 +24,7 @@ import org.mvel2.sh.ShellSession;
 public class PrintWorkingDirectory implements Command {
 
   public Object execute(ShellSession session, String[] args) {
-    System.out.println(session.getEnv().get("$CWD"));
+//    System.out.println(session.getEnv().get("$CWD"));
     return null;
   }
 

@@ -245,7 +245,7 @@ public class Stacklang extends BlockNode {
     }
 
     //noinspection StringEquality
-    if (keyword != s) {
+    if (!keyword.equals(s)) {
       instruction.expr = s.substring(split + 1);
     }
 

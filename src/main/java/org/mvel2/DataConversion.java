@@ -140,7 +140,7 @@ public class DataConversion {
     CONVERTERS.put(type, handler);
   }
 
-  public static void main(String[] args) {
-    System.out.println(char[][].class);
-  }
+//  public static void main(String[] args) {
+//    System.out.println(char[][].class);
+//  }
 }

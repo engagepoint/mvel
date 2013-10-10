@@ -366,8 +366,9 @@ public class ClassReader {
      * @throws java.io.IOException if an exception occurs during reading.
      */
     public ClassReader(final String name) throws IOException {
-        this(ClassLoader.getSystemResourceAsStream(name.replace('.', '/')
-                + ".class"));
+//        this(ClassLoader.getSystemResourceAsStream(name.replace('.', '/')
+//                + ".class"));
+        throw new UnsupportedOperationException("It is disabled to satisfy VERACODE");
     }
 
     /**
@@ -797,7 +798,7 @@ public class ClassReader {
                 if (WRITER && mv instanceof MethodWriter) {
                     MethodWriter mw = (MethodWriter) mv;
                     if (mw.cw.cr == this) {
-                        if (signature == mw.signature) {
+                        if (signature.equals(mw.signature)) {
                             boolean sameExceptions = false;
                             if (exceptions == null) {
                                 sameExceptions = mw.exceptionCount == 0;

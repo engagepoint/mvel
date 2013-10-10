@@ -40,22 +40,22 @@ public class ObjectInspector implements Command {
   public Object execute(ShellSession session, String[] args) {
 
     if (args.length == 0) {
-      System.out.println("inspect: requires an argument.");
+//      System.out.println("inspect: requires an argument.");
       return null;
     }
 
     if (!session.getVariables().containsKey(args[0])) {
-      System.out.println("inspect: no such variable: " + args[0]);
+//      System.out.println("inspect: no such variable: " + args[0]);
       return null;
     }
 
     Object val = session.getVariables().get(args[0]);
 
-    System.out.println("Object Inspector");
-    System.out.println(TextUtil.paint('-', PADDING));
+//    System.out.println("Object Inspector");
+//    System.out.println(TextUtil.paint('-', PADDING));
 
     if (val == null) {
-      System.out.println("[Value is Null]");
+//      System.out.println("[Value is Null]");
       return null;
     }
 
@@ -92,7 +92,7 @@ public class ObjectInspector implements Command {
     renderMethods(cls);
 
 
-    System.out.println();
+//    System.out.println();
 
     return null;
   }
@@ -156,11 +156,11 @@ public class ObjectInspector implements Command {
       if ((i + 1) < methods.length) appender.append('\n');
     }
 
-    System.out.println(appender.toString());
+//    System.out.println(appender.toString());
   }
 
   private static void write(Object first, Object second) {
-    System.out.println(padTwo(first, ": " + second, PADDING));
+//    System.out.println(padTwo(first, ": " + second, PADDING));
   }
 
   public String getDescription() {

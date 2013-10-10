@@ -458,20 +458,20 @@ public class PropertyAccessor {
     METHOD_RESOLVER_CACHE.clear();
   }
 
-  public static void reportCacheSizes() {
-    System.out.println("read property cache: " + READ_PROPERTY_RESOLVER_CACHE.size());
-    for (Class cls : READ_PROPERTY_RESOLVER_CACHE.keySet()) {
-      System.out.println(" [" + cls.getName() + "]: " + READ_PROPERTY_RESOLVER_CACHE.get(cls).size() + " entries.");
-    }
-    System.out.println("write property cache: " + WRITE_PROPERTY_RESOLVER_CACHE.size());
-    for (Class cls : WRITE_PROPERTY_RESOLVER_CACHE.keySet()) {
-      System.out.println(" [" + cls.getName() + "]: " + WRITE_PROPERTY_RESOLVER_CACHE.get(cls).size() + " entries.");
-    }
-    System.out.println("method cache: " + METHOD_RESOLVER_CACHE.size());
-    for (Class cls : METHOD_RESOLVER_CACHE.keySet()) {
-      System.out.println(" [" + cls.getName() + "]: " + METHOD_RESOLVER_CACHE.get(cls).size() + " entries.");
-    }
-  }
+//  public static void reportCacheSizes() {
+////    System.out.println("read property cache: " + READ_PROPERTY_RESOLVER_CACHE.size());
+//    for (Class cls : READ_PROPERTY_RESOLVER_CACHE.keySet()) {
+////      System.out.println(" [" + cls.getName() + "]: " + READ_PROPERTY_RESOLVER_CACHE.get(cls).size() + " entries.");
+//    }
+////    System.out.println("write property cache: " + WRITE_PROPERTY_RESOLVER_CACHE.size());
+//    for (Class cls : WRITE_PROPERTY_RESOLVER_CACHE.keySet()) {
+////      System.out.println(" [" + cls.getName() + "]: " + WRITE_PROPERTY_RESOLVER_CACHE.get(cls).size() + " entries.");
+//    }
+////    System.out.println("method cache: " + METHOD_RESOLVER_CACHE.size());
+//    for (Class cls : METHOD_RESOLVER_CACHE.keySet()) {
+////      System.out.println(" [" + cls.getName() + "]: " + METHOD_RESOLVER_CACHE.get(cls).size() + " entries.");
+//    }
+//  }
 
   private static void addReadCache(Class cls, Integer property, Member member) {
     synchronized (READ_PROPERTY_RESOLVER_CACHE) {
@@ -965,7 +965,7 @@ public class PropertyAccessor {
         return getLength(ctx);
       }
 
-      System.out.println("{ " + new String(property) + " }");
+//      System.out.println("{ " + new String(property) + " }");
 
 
       throw new PropertyAccessException("unable to resolve method: "

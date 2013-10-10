@@ -36,6 +36,7 @@ import org.mvel2.util.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.*;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -78,6 +79,8 @@ public class ASMAccessorOptimizer extends AbstractOptimizer implements AccessorO
   private static String LIST_IMPL;
   private static String NAMESPACE;
   private static final int OPCODES_VERSION;
+
+  private static final SecureRandom random = new SecureRandom();
 
   static {
     final String javaVersion = getProperty("java.version");
@@ -168,7 +171,7 @@ public class ASMAccessorOptimizer extends AbstractOptimizer implements AccessorO
     synchronized (Runtime.getRuntime()) {
       cw.visit(OPCODES_VERSION, Opcodes.ACC_PUBLIC + Opcodes.ACC_SUPER, className = "ASMAccessorImpl_"
           + valueOf(cw.hashCode()).replaceAll("\\-", "_") + (System.currentTimeMillis() / 10) +
-          ((int) Math.random() * 100),
+          ((int) random.nextDouble() * 100),
           null, "java/lang/Object", new String[]{NAMESPACE + "compiler/Accessor"});
     }
 
@@ -199,7 +202,7 @@ public class ASMAccessorOptimizer extends AbstractOptimizer implements AccessorO
     synchronized (Runtime.getRuntime()) {
       cw.visit(OPCODES_VERSION, Opcodes.ACC_PUBLIC + Opcodes.ACC_SUPER, className = "ASMAccessorImpl_"
           + valueOf(cw.hashCode()).replaceAll("\\-", "_") + (System.currentTimeMillis() / 10) +
-          ((int) Math.random() * 100),
+          ((int) random.nextDouble() * 100),
           null, "java/lang/Object", new String[]{NAMESPACE + "compiler/Accessor"});
     }
 
@@ -656,7 +659,7 @@ public class ASMAccessorOptimizer extends AbstractOptimizer implements AccessorO
     assert debug("\n{METHOD STATS (maxstack=" + stacksize + ")}\n");
 
 
-    dumpAdvancedDebugging(); // dump advanced debugging if necessary
+//    dumpAdvancedDebugging(); // dump advanced debugging if necessary
 
 
     mv.visitMaxs(stacksize, maxlocals);
@@ -737,8 +740,8 @@ public class ASMAccessorOptimizer extends AbstractOptimizer implements AccessorO
 
     }
     catch (VerifyError e) {
-      System.out.println("**** COMPILER BUG! REPORT THIS IMMEDIATELY AT http://jira.codehaus.org/browse/mvel2");
-      System.out.println("Expression: " + (expr == null ? null : new String(expr)));
+//      System.out.println("**** COMPILER BUG! REPORT THIS IMMEDIATELY AT http://jira.codehaus.org/browse/mvel2");
+//      System.out.println("Expression: " + (expr == null ? null : new String(expr)));
       throw e;
     }
 
@@ -3177,25 +3180,25 @@ public class ASMAccessorOptimizer extends AbstractOptimizer implements AccessorO
     return returnType;
   }
 
-  private void dumpAdvancedDebugging() {
-    if (buildLog == null) return;
-
-    System.out.println("JIT Compiler Dump for: <<" + (expr == null ? null : new String(expr))
-        + ">>\n-------------------------------\n");
-    System.out.println(buildLog.toString());
-    System.out.println("\n<END OF DUMP>\n");
-    if (MVEL.isFileDebugging()) {
-      try {
-        FileWriter writer = ParseTools.getDebugFileWriter();
-        writer.write(buildLog.toString());
-        writer.flush();
-        writer.close();
-      }
-      catch (IOException e) {
-        //empty
-      }
-    }
-  }
+//  private void dumpAdvancedDebugging() {
+//    if (buildLog == null) return;
+//
+//    System.out.println("JIT Compiler Dump for: <<" + (expr == null ? null : new String(expr))
+//        + ">>\n-------------------------------\n");
+//    System.out.println(buildLog.toString());
+//    System.out.println("\n<END OF DUMP>\n");
+//    if (MVEL.isFileDebugging()) {
+//      try {
+//        FileWriter writer = ParseTools.getDebugFileWriter();
+//        writer.write(buildLog.toString());
+//        writer.flush();
+//        writer.close();
+//      }
+//      catch (IOException e) {
+//        //empty
+//      }
+//    }
+//  }
 
   private Object propHandlerByteCode(String property, Object ctx, Class handler) {
     PropertyHandler ph = getPropertyHandler(handler);

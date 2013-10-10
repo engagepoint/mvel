@@ -64,10 +64,8 @@ public class ShellSession {
   private String commandBuffer;
   StringAppender inBuffer = new StringAppender();
 
-  final BufferedReader readBuffer = new BufferedReader(new InputStreamReader(System.in));
-
   public ShellSession() {
-    System.out.println("Starting session...");
+//    System.out.println("Starting session...");
 
     variables = new HashMap<String, Object>();
     env = new HashMap<String, String>();
@@ -97,7 +95,7 @@ public class ShellSession {
       }
     }
     catch (MissingResourceException e) {
-      System.out.println("No config file found.  Loading default config.");
+//      System.out.println("No config file found.  Loading default config.");
 
       if (!contains(getProperty("os.name").toLowerCase(), "windows")) {
         env.put("$PATH", "/bin:/usr/bin:/sbin:/usr/sbin");
@@ -246,6 +244,7 @@ public class ShellSession {
 
                     Thread runningThread = new Thread(new Runnable() {
                       public void run() {
+                          final BufferedReader readBuffer = new BufferedReader(new InputStreamReader(System.in));
                         try {
                           String read;
                           while (runState.isRunning()) {
@@ -268,6 +267,11 @@ public class ShellSession {
                         catch (Exception e2) {
 
                         }
+                          try {
+                              if(readBuffer!=null)readBuffer.close();
+                          } catch (IOException e1) {
+
+                          }
                       }
 
                     });
@@ -377,7 +381,7 @@ public class ShellSession {
     }
     catch (Exception e) {
       e.printStackTrace();
-      System.out.println("unexpected exception. exiting.");
+//      System.out.println("unexpected exception. exiting.");
     }
 
   }

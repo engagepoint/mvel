@@ -59,9 +59,9 @@ public class TemplateTools {
     return cursor;
   }
 
-  public static String readInFile(String file) {
-    return readInFile(new File(file));
-  }
+//  public static String readInFile(String file) {
+//    return readInFile(new File(file));
+//  }
 
   public static String readInFile(File file) {
     try {

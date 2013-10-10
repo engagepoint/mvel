@@ -32,7 +32,7 @@ public class Set implements Command {
 
     if (args.length == 0) {
       for (String var : env.keySet()) {
-        System.out.println(var + " = " + env.get(var));
+//        System.out.println(var + " = " + env.get(var));
       }
     }
     else if (args.length == 1) {
