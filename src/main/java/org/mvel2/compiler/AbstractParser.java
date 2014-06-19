@@ -2305,9 +2305,10 @@ public class AbstractParser implements Parser, Serializable {
   public static final int LEVEL_1_BASIC_LANG = 1;
   public static final int LEVEL_0_PROPERTY_ONLY = 0;
 
+    // Mvel conditions fix hack
   public static void setLanguageLevel(int level) {
     OPERATORS.clear();
-    OPERATORS.putAll(loadLanguageFeaturesByLevel(level));
+    OPERATORS.putAll(loadLanguageFeaturesByLevel(LEVEL_5_CONTROL_FLOW));
   }
 
   public static HashMap<String, Integer> loadLanguageFeaturesByLevel(int languageLevel) {
